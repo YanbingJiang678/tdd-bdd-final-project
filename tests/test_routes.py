@@ -38,7 +38,6 @@ from service.models import Product, Category
 from unittest.mock import patch
 
 
-
 # Disable all but critical errors during normal test run
 # uncomment for debugging failing tests
 logging.disable(logging.CRITICAL)
@@ -170,9 +169,6 @@ class TestProductRoutes(TestCase):
         response = self.client.post(BASE_URL, data={}, content_type="plain/text")
         self.assertEqual(response.status_code, status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 
-    #
-    # ADD YOUR TEST CASES HERE
-    #
     def test_get_product(self):
         """It should Get a single Product"""
         # get the id of a product
@@ -242,7 +238,6 @@ class TestProductRoutes(TestCase):
         for product in data:
             self.assertEqual(product["available"], True)
 
-
     def test_query_by_name(self):
         """It should Query Products by name"""
         products = self._create_products(5)
@@ -257,8 +252,7 @@ class TestProductRoutes(TestCase):
         # check the data just to be sure
         for product in data:
             self.assertEqual(product["name"], test_name)
-            
-            
+                   
     def test_query_by_category(self):
         """It should Query Products by category"""
         products = self._create_products(10)
@@ -275,11 +269,6 @@ class TestProductRoutes(TestCase):
         # check the data just to be sure
         for product in data:
             self.assertEqual(product["category"], category.name)
-
-
-  
-    
-
 
     ######################################################################
     # Utility functions

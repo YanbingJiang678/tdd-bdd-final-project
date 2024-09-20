@@ -68,8 +68,8 @@ class Product(db.Model):
     This version uses a relational database for persistence which is hidden
     from us by SQLAlchemy's object relational mappings (ORM)
     """
-    
-    
+
+
     ##################################################
     # Table Schema
     ##################################################
@@ -142,7 +142,7 @@ class Product(db.Model):
                     "Invalid type for boolean [available]: "
                     + str(type(data["available"]))
                 )
-            self.category = getattr(Category, data["category"])  # create enum from string
+            self.category = getattr(Category, data["category"])  
         except AttributeError as error:
             raise DataValidationError("Invalid attribute: " + error.args[0]) from error
         except KeyError as error:
