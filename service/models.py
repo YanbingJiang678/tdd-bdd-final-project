@@ -47,6 +47,7 @@ def init_db(app):
 
 class DataValidationError(Exception):
     """Used for an data validation errors when deserializing"""
+    pass
 
 
 class Category(Enum):
@@ -67,7 +68,8 @@ class Product(db.Model):
     This version uses a relational database for persistence which is hidden
     from us by SQLAlchemy's object relational mappings (ORM)
     """
-
+    
+    
     ##################################################
     # Table Schema
     ##################################################
@@ -219,6 +221,7 @@ class Product(db.Model):
         if isinstance(price, str):
             price_value = Decimal(price.strip(' "'))
         return cls.query.filter(cls.price == price_value)
+
 
     @classmethod
     def find_by_availability(cls, available: bool = True) -> list:
